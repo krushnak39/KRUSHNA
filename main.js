@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 			if (user) {
 				setTimeout(() => {
-					window.location.pathname = "/app/app.html"
+					window.location.pathname = "KRUSHNA/app/app.html"
 				}, 2000);
 			}
 
