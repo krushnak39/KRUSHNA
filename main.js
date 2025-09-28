@@ -208,7 +208,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         // Hard-coding window.location.pathname removed because it dropped the repo segment in some deployments.
         setTimeout(() => {
           // If already inside a project pages path, a relative link keeps the base.
-          window.location.href = 'app/app.html';
+          window.location.href = '/KRUSHNA/app/app.html';
         }, 1200);
       }
     } else {
