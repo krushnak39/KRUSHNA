@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Farmer Helper - Auth</title>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="auth-shell" aria-labelledby="authTitle">
+        <h1 id="authTitle" class="visually-hidden">Authentication</h1>
+
+        <!-- Background Image Layer -->
+        <div class="background" aria-hidden="true">
+            <div class="bg-overlay"></div>
+        </div>
+
+        <!-- Auth Card -->
+        <section class="auth-card" role="dialog" aria-modal="true" aria-describedby="authDesc">
+            <p id="authDesc" class="visually-hidden">Use the tabs to switch between sign in and sign up forms.</p>
+            <header class="tabs" role="tablist" aria-label="Authentication forms">
+                <button class="tab active" role="tab" aria-selected="true" aria-controls="signinPanel" id="signinTab" data-mode="signin">Sign In</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="signupPanel" id="signupTab" data-mode="signup">Sign Up</button>
+            </header>
+
+            <!-- Sign In Form -->
+            <form id="signinForm" class="form active" autocomplete="on" novalidate role="tabpanel" aria-labelledby="signinTab" aria-hidden="false" data-mode="signin">
+                <div class="form-title">
+                    <h2>Welcome Back 👨‍🌾</h2>
+                    <p>Grow your success – sign in to continue.</p>
+                </div>
+                <div class="field">
+                    <label for="signinEmail">Email</label>
+                    <input type="email" id="signinEmail" name="email" placeholder="you@example.com" required />
+                    <small class="error" data-for="signinEmail"></small>
+                </div>
+                <div class="field">
+                    <label for="signinPassword">Password</label>
+                    <input type="password" id="signinPassword" name="password" placeholder="••••••••" minlength="6" required />
+                    <small class="error" data-for="signinPassword"></small>
+                </div>
+                <div class="actions">
+                    <button type="submit" class="btn primary">Sign In</button>
+                </div>
+                <p class="switch-msg">New here? <button type="button" class="link" data-switch="signup" aria-controls="signupPanel">Create an account</button></p>
+            </form>
+
+            <!-- Sign Up Form -->
+            <form id="signupForm" class="form" autocomplete="on" novalidate role="tabpanel" aria-labelledby="signupTab" aria-hidden="true" data-mode="signup">
+                <div class="form-title">
+                    <h2>Join the Community 🌱</h2>
+                    <p>Sign up to start cultivating better yields.</p>
+                </div>
+                <div class="grid">
+                    <div class="field">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="Krushna" required />
+                        <small class="error" data-for="firstName"></small>
+                    </div>
+                    <div class="field">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="kadam" />
+                        <small class="error" data-for="lastName"></small>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" name="email" placeholder="farmer@example.com" required />
+                    <small class="error" data-for="signupEmail"></small>
+                </div>
+                <div class="grid">
+                    <div class="field">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" name="password" placeholder="Min 6 characters" minlength="6" required />
+                        <small class="error" data-for="signupPassword"></small>
+                    </div>
+                    <div class="field">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repeat password" minlength="6" required />
+                        <small class="error" data-for="confirmPassword"></small>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="checkbox">
+                        <input type="checkbox" id="terms" required />
+                        <span>I agree to the <a href="#" class="inline-link">terms &amp; conditions</a>.</span>
+                    </label>
+                    <small class="error" data-for="terms"></small>
+                </div>
+                <div class="actions">
+                    <button type="submit" class="btn primary">Create Account</button>
+                </div>
+                <p class="switch-msg">Already have an account? <button type="button" class="link" data-switch="signin" aria-controls="signinPanel">Sign in</button></p>
+            </form>
+        </section>
+        <footer class="credits">Images: Royalty-free Unsplash (farmland & jungle). Replace with your own assets if needed.</footer>
+    </main>
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>

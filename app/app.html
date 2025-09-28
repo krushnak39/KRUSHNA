@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Farmer Portal Dashboard</title>
+	<link rel="stylesheet" href="../main.css" />
+	<link rel="stylesheet" href="app.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div id="app" class="dashboard-shell" data-loading>
+		<header class="topbar">
+			<div class="brand">👨‍🌾 Farmer Portal</div>
+			<nav class="main-nav" aria-label="Main Navigation">
+				<button class="nav-link active" data-view="profile">Profile</button>
+				<button class="nav-link" data-view="services">Gov Services</button>
+				<button class="nav-link" data-view="feedback">Feedback</button>
+			</nav>
+			<div class="user-meta" id="userMeta">
+				<span id="userEmail" class="user-email">...</span>
+				<button id="signOutBtn" class="btn small" title="Sign Out">Sign Out</button>
+			</div>
+		</header>
+		<main class="content" id="content">
+			<!-- Profile View -->
+			<section id="view-profile" class="view active" aria-labelledby="profileHeading">
+				<h2 id="profileHeading">My Profile</h2>
+				<form id="profileForm" autocomplete="on" novalidate>
+					<div class="form-grid">
+						<label class="field"> <span>First Name</span>
+							<input type="text" id="pf-first" required />
+						</label>
+						<label class="field"> <span>Last Name</span>
+							<input type="text" id="pf-last" />
+						</label>
+						<label class="field"> <span>Phone</span>
+							<input type="tel" id="pf-phone" placeholder="10 digit" pattern="^[0-9]{10}$" />
+						</label>
+						<label class="field"> <span>District</span>
+							<input type="text" id="pf-district" />
+						</label>
+						<label class="field select"> <span>State</span>
+							<select id="pf-state"></select>
+						</label>
+						<label class="field"> <span>Primary Crop</span>
+							<input type="text" id="pf-crop" placeholder="e.g. Cotton" />
+						</label>
+					</div>
+					<label class="field wide"> <span>About / Notes</span>
+						<textarea id="pf-notes" rows="4" placeholder="Farming experience, issues, etc..."></textarea>
+					</label>
+					<div class="actions-row">
+						<button type="submit" class="btn primary" id="saveProfileBtn">Save Profile</button>
+						<span id="profileStatus" class="inline-status" aria-live="polite"></span>
+					</div>
+				</form>
+			</section>
+
+			<!-- Services View -->
+			<section id="view-services" class="view" aria-labelledby="servicesHeading">
+				<h2 id="servicesHeading">Government Schemes & Services</h2>
+				<div class="filters">
+					<input type="search" id="serviceSearch" placeholder="Search scheme (PM-KISAN, Soil Card, Crop Insurance...)" />
+					<select id="serviceCategory">
+						<option value="all">All Categories</option>
+						<option value="subsidy">Subsidy</option>
+						<option value="insurance">Insurance</option>
+						<option value="advisory">Advisory</option>
+						<option value="loan">Loan</option>
+					</select>
+				</div>
+				<div id="servicesList" class="card-list" aria-live="polite"></div>
+				<template id="serviceCardTpl">
+					<article class="service-card">
+						<h3 class="svc-title"></h3>
+						<p class="svc-desc"></p>
+						<div class="svc-meta">
+							<span class="tag"></span>
+							<button class="link small more-btn" type="button">Details</button>
+						</div>
+						<div class="svc-details hidden"></div>
+					</article>
+				</template>
+			</section>
+
+			<!-- Feedback View -->
+			<section id="view-feedback" class="view" aria-labelledby="feedbackHeading">
+				<h2 id="feedbackHeading">Feedback & Issues</h2>
+				<form id="feedbackForm">
+					<div class="form-grid compact">
+						<label class="field wide"> <span>Category</span>
+							<select id="fb-category" required>
+								<option value="">Select...</option>
+								<option value="payment">Payment / Subsidy Delay</option>
+								<option value="insurance">Insurance Claim Issue</option>
+								<option value="pest">Pest / Crop Disease</option>
+								<option value="weather">Weather Impact</option>
+								<option value="market">Market Price Concern</option>
+								<option value="other">Other</option>
+							</select>
+						</label>
+						<label class="field wide"> <span>Subject</span>
+							<input type="text" id="fb-subject" required maxlength="120" />
+						</label>
+						<label class="field wide"> <span>Description</span>
+							<textarea id="fb-message" rows="5" required placeholder="Describe the issue... Include dates, scheme names, references."></textarea>
+						</label>
+						<label class="field"> <span>Urgency</span>
+							<select id="fb-urgency">
+								<option value="normal">Normal</option>
+								<option value="high">High</option>
+								<option value="critical">Critical</option>
+							</select>
+						</label>
+					</div>
+					<div class="actions-row">
+						<button type="submit" class="btn primary">Submit Feedback</button>
+						<span id="feedbackStatus" class="inline-status" aria-live="polite"></span>
+					</div>
+				</form>
+				<h3 class="mt">Recent Feedback</h3>
+				<div id="feedbackList" class="timeline" aria-live="polite"></div>
+				<template id="feedbackItemTpl">
+					<div class="feedback-item">
+						<div class="head"><span class="cat badge"></span><time class="time" datetime=""></time></div>
+						<div class="subject"></div>
+						<div class="msg"></div>
+						<div class="status-row"><span class="urgency chip"></span></div>
+					</div>
+				</template>
+			</section>
+		</main>
+	</div>
+
+	<script type="module" src="app.js"></script>
+</body>
+</html>
